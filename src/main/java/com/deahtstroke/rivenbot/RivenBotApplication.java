@@ -1,7 +1,5 @@
 package com.deahtstroke.rivenbot;
 
-import com.deahtstroke.rivenbot.filter.SignatureFilterFunction;
-import com.deahtstroke.rivenbot.dispatcher.DiscordInteractionDispatcher;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
@@ -11,9 +9,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 import org.springframework.web.reactive.function.client.WebClient;
-import org.springframework.web.reactive.function.server.RouterFunction;
-import org.springframework.web.reactive.function.server.RouterFunctions;
-import org.springframework.web.reactive.function.server.ServerResponse;
 
 @Slf4j
 @SpringBootApplication
@@ -21,16 +16,6 @@ public class RivenBotApplication {
 
   public static void main(String[] args) {
     SpringApplication.run(RivenBotApplication.class, args);
-  }
-
-  @Bean
-  RouterFunction<ServerResponse> interactionRouterFunction(
-      DiscordInteractionDispatcher interactionHandler,
-      SignatureFilterFunction signatureFilterFunction) {
-    return RouterFunctions.route()
-        .POST("/interactions", interactionHandler::resolveRequest)
-        .filter(signatureFilterFunction)
-        .build();
   }
 
   /**
