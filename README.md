@@ -1,10 +1,22 @@
-# Riven Bot for Discord
-> Source code for Riven Bot
+# Riven Bot for Discord (Legacy)
+> This repository contains the monolithic, legacy implementation of RivenBot.
+> Active development has moved to a new, modular version of the bot. This codebase is no longer maintained, and is preserved for historical reference and migration purposes only.
 
-This repository has all the source code that makes the Riven Bot work. The idea is to have a Discord bot that contains very useful utilities for D2 players that use Discord as their main social media platform like retrieving weekly-rotation information for in-game activities and player-specific raid/dungeon statistics. 
+![Project Status](https://img.shields.io/badge/status-archived-lightgrey) 
 
-## Why? 
-Because I can and I want to learn through projects that I find fun and challenging.
+This project served as the original implementation of RivenBot and was a learning ground for building real-time, API-integrated Discord utilities. It helped prototype features and shaped the foundation for the [modular version](https://github.com/Riven-of-a-Thousand-Servers/) that is currently in development.
+
+## Why?
+
+This project was built out of a desire to learn by building something fun and personally meaningful. The bot provided a practical way to explore system design, caching, observability, reactive programming, and infrastructure automation.
+
+## Reflections on Technology Choices
+
+The technology stack chosen for this project was intentionally ambitious and modern, including reactive programming with Spring Webflux. While Webflux and the reactive paradigm offer impressive scalability and non-blocking I/O, **they introduce substantial complexity when it comes to reasoning about code, debugging, and maintaining the system over time**.
+
+> ✅ **Lesson learned:** Choosing a "shiny" or advanced technology can be valuable for learning—but may not be the most pragmatic choice for long-term maintainability, especially in solo or small-team projects.
+
+These reflections have directly influenced the architectural decisions in the next-generation RivenBot, which focuses on modularity, observability, and maintainability over technical novelty.
 
 ## Stack
   - [Spring Boot](https://spring.io/projects/spring-boot) - Official documentation for Spring Boot
@@ -23,19 +35,17 @@ Because I can and I want to learn through projects that I find fun and challengi
   - [Grafana](https://grafana.com/oss/grafana) - Official documentation for OSS Grafana
   - [Loki4j](https://github.com/loki4j/loki-logback-appender) - Official GitHub repository for Loki4j Logback Appender
 
-Any information regarding versions of specific dependencies you can find it in the `build.gradle` file at the root directory of the project
+> Dependency versions can be found in the `build.gradle` file.
 
-You can invite Riven to your server ~here~ **Riven will be back soon! We're in the process of moving infrastructure somewhere else.**
+## Current Status
 
+🚧 **RivenBot is undergoing a major rewrite.**  
+This codebase is no longer in active development, and the bot is temporarily offline as we migrate to a more modular infrastructure.
 
-## Raid Stats
-So far the bot has limited functionality and the focus of the next releases will be to polish out the `/raid_stats` command, improving the time it takes to load hundreds, even thousands of raid reports to calculate the numbers for an individual player, as well as adding filters to the command itself if the user would prefer to narrow down their search to only one raid at a time. 
+## Features (Legacy)
 
-Here's a small demo of how the Raid Statistics are utilized and presented when using RivenBot:
+### Raid Stats
+
+This version of the bot includes a `/raid_stats` command that fetches and aggregates player raid data. The feature was built to handle large volumes of reports per user, though performance tuning and filtering were still a work in progress.
 
 https://github.com/user-attachments/assets/d296c71e-2061-47ba-af2a-b2c3bd4b2f9e
-
-
-## Contributing
-This is meant to be a personal-project, therefore any issues or suggestions are appreciated but the development of the bot is under my responsibility and of selected trusted individuals. If you have an awesome idea for this bot, you can open a 
-GitHub issue; that way we can discuss the idea further.
